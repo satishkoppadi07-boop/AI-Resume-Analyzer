@@ -21,6 +21,17 @@ AI Resume Analyzer is a web application that analyzes resumes and provides ATS s
 - Bootstrap
 - Google Gemini API
 
+## Screenshots
+
+### Resume Upload
+![Upload](images/upload.png)
+
+### ATS Score
+![ATS](images/ats-score.png)
+
+### AI Insights
+![AI](images/ai-insights.png)
+
 ## How to Run
 
 1. Clone the repository
