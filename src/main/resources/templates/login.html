@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>User Login</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, sans-serif;
+        }
+
+        body{
+            background:url('https://images.unsplash.com/photo-1516321318423-f06f85e5') no-repeat center center;
+            background-size:cover;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            width:420px;
+            background:rgba(255,255,255,0.95);
+            padding:35px;
+            border-radius:15px;
+            box-shadow:0 0 25px rgba(0,0,0,0.3);
+        }
+
+        h2{
+            text-align:center;
+            color:#2d0aa8;
+            margin-bottom:25px;
+            font-size:38px;
+        }
+
+        label{
+            font-size:18px;
+            font-weight:bold;
+            color:#333;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            margin-top:8px;
+            margin-bottom:18px;
+            border:1px solid #ccc;
+            border-radius:6px;
+            font-size:16px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#2d0aa8;
+            color:white;
+            border:none;
+            border-radius:6px;
+            font-size:18px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#1d0675;
+        }
+
+        .register-link{
+            text-align:center;
+            margin-top:20px;
+        }
+
+        .register-link a{
+            text-decoration:none;
+            color:#2d0aa8;
+            font-weight:bold;
+            font-size:16px;
+        }
+
+        .error{
+            color:red;
+            text-align:center;
+            margin-top:10px;
+        }
+
+        .success{
+            color:green;
+            text-align:center;
+            margin-top:10px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>User Login</h2>
+
+    <form action="/login" method="post">
+
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+    <p style="color:red;" th:text="${error}"></p>
+    <p style="color:green;" th:text="${success}"></p>
+
+    <div class="register-link">
+        <a href="/register">Create Account</a>
+    </div>
+
+    <p class="error" th:text="${error}"></p>
+    <p class="success" th:text="${success}"></p>
+
+</div>
+
+</body>
+</html>

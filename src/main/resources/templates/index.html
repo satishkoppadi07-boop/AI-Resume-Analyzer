@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume Analyzer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#f4f7fc;
+            min-height:100vh;
+        }
+
+        /* Navbar */
+
+        .navbar-custom{
+            background:#2d0aa8;
+            padding:15px 30px;
+        }
+
+        .navbar-custom .logo{
+            color:white;
+            font-size:28px;
+            font-weight:bold;
+            text-decoration:none;
+        }
+
+        .navbar-custom .welcome{
+            color:white;
+            font-weight:bold;
+            margin-right:20px;
+        }
+
+        .logout-btn{
+            background:white;
+            color:#2d0aa8;
+            padding:8px 18px;
+            border-radius:5px;
+            text-decoration:none;
+            font-weight:bold;
+        }
+
+        /* Upload Card */
+
+        .upload-card{
+            background:white;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.15);
+            margin-top:40px;
+        }
+
+        .upload-title{
+            color:#2d0aa8;
+            font-weight:bold;
+            text-align:center;
+            margin-bottom:25px;
+        }
+
+        .analyze-btn{
+            width:100%;
+            background:#2d0aa8;
+            border:none;
+            padding:12px;
+            font-size:18px;
+            font-weight:bold;
+        }
+
+        .result-box{
+            margin-top:25px;
+            padding:25px;
+            background:white;
+            border-radius:15px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        #result{
+            color:#333;
+            line-height:1.7;
+            font-size:16px;
+        }
+
+        #result h2{
+            color:#2d0aa8;
+            margin-bottom:15px;
+        }
+
+        #result h3{
+            color:#0d6efd;
+            margin-top:20px;
+            margin-bottom:10px;
+        }
+
+        #result h4{
+            margin-top:20px;
+            margin-bottom:10px;
+        }
+
+        #result ul{
+            padding-left:25px;
+        }
+
+        #result li{
+            margin-bottom:6px;
+        }
+
+        .spinner{
+            width:50px;
+            height:50px;
+            border:5px solid #ddd;
+            border-top:5px solid #2d0aa8;
+            border-radius:50%;
+            animation:spin 1s linear infinite;
+            margin:auto;
+        }
+
+        @keyframes spin{
+            0%{
+                transform:rotate(0deg);
+            }
+            100%{
+                transform:rotate(360deg);
+            }
+        }
+
+        #loading{
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            margin-top:20px;
+            text-align:center;
+            box-shadow:0 0 10px rgba(0,0,0,0.2);
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar navbar-custom">
+
+    <a href="/upload" class="logo">
+        📄 Resume Analyzer
+    </a>
+
+    <div>
+
+        <span class="welcome"
+              th:text="'Welcome, ' + ${username}">
+            Welcome User
+        </span>
+
+        <a href="/logout" class="logout-btn">
+            Logout
+        </a>
+
+    </div>
+
+</nav>
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-8">
+
+            <div class="upload-card">
+
+                <h2 class="upload-title">
+                    Resume Analysis Dashboard
+                </h2>
+
+                <form id="resumeForm" action="/analyze"
+                      method="post"
+                      enctype="multipart/form-data">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            <b>Select Domain</b>
+                        </label>
+
+                        <select name="domain"
+                                class="form-select">
+
+                            <option>CSE</option>
+                            <option>IT</option>
+                            <option>Electronics (ECE)</option>
+                            <option>Electrical (EEE)</option>
+                            <option>CSBS</option>
+                            <option>Mechanical</option>
+                            <option>Civil</option>
+                            <option>AIML</option>
+                            <option>AIDS</option>
+                            <option>CSD</option>
+                            <option>CSM</option>
+                            <option>General Placement</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            <b>Upload Resume</b>
+                        </label>
+
+                        <input type="file"
+                               name="file"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <button type="submit"
+                            class="btn btn-primary analyze-btn">
+
+                        Analyze Resume
+
+                    </button>
+
+                </form>
+
+                <div id="loading" style="display:none;text-align:center;margin-top:20px">
+
+                    <div class="spinner"></div>
+
+                    <h3>Analyzing Resume...</h3>
+
+                    <p>Please wait while AI is reviewing your resume.</p>
+
+                </div>
+
+            </div>
+
+            <div th:if="${message}" class="result-box">
+
+                <div id="result"
+                     th:utext="${message}">
+                </div>
+
+                <hr>
+
+                <a href="/download"
+                   class="btn btn-success w-100">
+
+                    Download Report PDF
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    document.getElementById("resumeForm").addEventListener("submit", function() {
+
+        document.getElementById("loading").style.display = "block";
+
+    });
+</script>
+
+</body>
+</html>

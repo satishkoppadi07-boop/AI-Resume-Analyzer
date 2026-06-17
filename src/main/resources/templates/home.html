@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resume Analyzer</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
+
+        body{
+            background:url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200')
+            no-repeat center center/cover;
+            min-height:100vh;
+        }
+
+        .navbar{
+            background:#2d0aa8;
+            color:white;
+            padding:15px 30px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .nav-left a{
+            color:white;
+            text-decoration:none;
+            margin-right:25px;
+            font-size:22px;
+            font-weight:bold;
+        }
+
+        .nav-right a{
+            text-decoration:none;
+            padding:10px 18px;
+            background:white;
+            color:black;
+            border-radius:5px;
+            margin-left:10px;
+            font-weight:bold;
+        }
+
+        .nav-right a:hover{
+            background:#f0f0f0;
+        }
+
+        .hero{
+            text-align:center;
+            color:white;
+            margin-top:140px;
+        }
+
+        .hero h1{
+            font-size:70px;
+            margin-bottom:20px;
+            text-shadow:2px 2px 10px black;
+        }
+
+        .hero p{
+            font-size:28px;
+            margin-bottom:40px;
+            text-shadow:1px 1px 8px black;
+        }
+
+        .btn{
+            padding:15px 35px;
+            background:white;
+            color:black;
+            text-decoration:none;
+            border-radius:6px;
+            margin:10px;
+            font-weight:bold;
+            font-size:18px;
+        }
+
+        .btn:hover{
+            background:#ececec;
+        }
+
+        footer{
+            position:fixed;
+            bottom:0;
+            width:100%;
+            background:#162447;
+            color:white;
+            text-align:center;
+            padding:15px;
+            font-weight:bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+
+    <div class="nav-left">
+        <a href="/upload">📄 Resume Analyzer</a>
+        <a href="/home">🏠 Home</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+</div>
+
+<div class="hero">
+
+    <h1>Resume Analyzer</h1>
+
+    <p>
+        Upload Resume • ATS Score • AI Career Insights • PDF Report
+    </p>
+
+    <a href="/login" class="btn">Login</a>
+    <a href="/register" class="btn">Register</a>
+
+</div>
+
+<footer>
+    Resume Analyzer Project | Developed By Satish
+</footer>
+
+</body>
+</html>
